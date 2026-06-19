@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block contents %}
+
+  
+    {% if home.img_1 %}
+       
+        <div class="relative w-full">
+           
+            <img src="{{ home.img_1.url }}" alt="hero image" class="w-full mt-6 h-[800px] object-cover">
+         <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white text-center w-full">
+                <h2 class="text-4xl font-bold mb-4 drop-shadow-md">Make Your Style</h2>
+      <a href="#shirts" class="bg-white text-black px-6 py-2 rounded font-semibold hover:bg-gray-200 transition-colors">Shop Now</a>
+   </div>
+        </div>
+    {% endif %}
+
+    
+    {% for category in categories %}
+        
+    <h2 style="font-family: 'Playfair Display', serif;" class="text-3xl font-bold text-center mt-44 mb-12" id="{{ category.title|slugify }}" st>
+        {{ category.title }}
+    </h2>
+   
+<div class="flex flex-wrap gap-8 justify-center bg-gray-100 p-8 mx-4 mb-12 rounded-lg">
+    
+
+    {% for Product in category.products %}
+        <div class="group w-80 overflow-hidden rounded-2xl bg-white p-5 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+    
+    <div class="relative h-72 w-full overflow-hidden rounded-xl bg-gray-50 flex items-center justify-center">
+       {% if Product.img_3 %}
+    <img src="{{ Product.img_3.url }}" alt="{{ Product.title }}" class="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105" />
+{% endif %}
+    </div>
+    
+    <a href="{%url 'post-list' pk=Product.pk%}">
+       
+        <h3 class="mt-5 text-lg font-bold text-gray-800 transition-colors duration-200 group-hover:text-blue-600 capitalize text-center" style="font-family: 'Playfair Display', serif;">
+            {{ Product.title }}
+                </h3>
+            </a>
+
+        </div>
+            {% endfor %}
+        </div> 
+    {% endfor %}
+         
+{% endblock %}

@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+{% block contents %}
+
+<div class="max-w-7xl mx-auto p-8 m-12">
+    
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-16">
+        
+
+    <div class="flex flex-col md:col-span-3">
+    
+    <div class="mb-4 border border-gray-200 rounded-lg overflow-hidden bg-gray-50 flex items-center justify-start">
+        {% if detail.img_3 %}
+            <img id="main-image" src="{{ detail.img_3.url }}" alt="{{ detail.title }}" class="w-full max-h-[750px] object-contain object-left">
+        {% else %}
+            <div class="h-96 flex items-center justify-start pl-8 text-gray-400">No Image Available</div>
+        {% endif %}
+    </div>
+
+    <div class="flex gap-4 mb-6 justify-start">
+        {% if detail.img_3 %}
+        <button onclick="changeImage(this, '{{ detail.img_3.url }}')" 
+                class="thumbnail-btn border-2 border-teal-600 rounded-md overflow-hidden focus:outline-none w-20 h-20 transition-all">
+            <img src="{{ detail.img_3.url }}" class="w-full h-full object-cover">
+        </button>
+        {% endif %}
+
+        {% if detail.img_4 %}
+        <button onclick="changeImage(this, '{{ detail.img_4.url }}')" 
+                class="thumbnail-btn border-2 border-transparent hover:border-gray-300 rounded-md overflow-hidden focus:outline-none w-20 h-20 transition-all">
+            <img src="{{ detail.img_4.url }}" class="w-full h-full object-cover">
+        </button>
+        {% endif %}
+
+        {% if detail.img_5 %}
+        <button onclick="changeImage(this, '{{ detail.img_5.url }}')" 
+                class="thumbnail-btn border-2 border-transparent hover:border-gray-300 rounded-md overflow-hidden focus:outline-none w-20 h-20 transition-all">
+            <img src="{{ detail.img_5.url }}" class="w-full h-full object-cover">
+        </button>
+        {% endif %}
+    </div>
+
+    <p class="text-3xl font-bold text-gray-900 mt-2 text-left">
+        ₹{{ detail.price }}
+    </p>
+    
+</div>
+
+  <div class="flex flex-col md:col-span-2 justify-start mt-2" style="font-family: 'Inter', sans-serif;">
+            
+            <h1 class="text-3xl md:text-4xl font-bold mb-3 text-gray-900 tracking-tight">
+                {{ detail.title }}
+            </h1>
+
+            <div class="text-gray-600 text-[15px] md:text-base leading-relaxed whitespace-pre-line">
+                {{ detail.decription }}
+            </div>
+            
+        </div>
+        
+    </div>
+    <div class="mt-6 w-full max-w-xs">
+    {% if user.is_authenticated %}
+        <form action="{% url 'process_order' pk=detail.pk %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="w-full bg-gray-900 text-white py-2 px-1 rounded-md font-semibold mt-6">
+                Buy Now
+            </button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}?next={{ request.path }}" class="block text-center w-full border-2 border-gray-900 text-gray-900 py-3 px-6 rounded-md font-semibold hover:bg-gray-900 ">
+            Log in to Buy
+        </a>
+    {% endif %}
+</div>
+
+</div>
+
+
+{% if messages %}
+<div class="mt-4">
+    {% for message in messages %}
+        <p class="text-green-600 font-semibold">{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
+<script>
+    function changeImage(clickedButton, newHighResSrc) {
+        // Swap main image
+        const mainImage = document.getElementById('main-image');
+        if (mainImage) {
+            mainImage.src = newHighResSrc;
+        }
+
+        // Reset borders
+        const allButtons = document.querySelectorAll('.thumbnail-btn');
+        allButtons.forEach(btn => {
+            btn.classList.remove('border-teal-600');
+            btn.classList.add('border-transparent');
+        });
+
+        // Highlight active
+        clickedButton.classList.remove('border-transparent');
+        clickedButton.classList.add('border-teal-600');
+    }
+</script>
+         
+{% endblock %}
