@@ -14,7 +14,7 @@ This is a beginner-level e-commerce website where users can view products and ma
 - Product listing
 - Product details page
 
-- Cart management
+
 - Order functionality
 - Admin panel for managing products and users
 
