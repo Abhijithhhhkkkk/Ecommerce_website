@@ -148,7 +148,7 @@ This project was built to gain practical experience in:
 ### Django Admin Dashboard
 
 <p align="center">
-  <img src="screenshots/admin-dashboard.png" width="900">
+  <img src="screenshots/Screenshot From 2026-06-25 12-45-51.png" width="900">
 </p>
 
 ## Author
