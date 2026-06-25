@@ -142,7 +142,7 @@ This project was built to gain practical experience in:
 ### Product Detail Page
 
 <p align="center">
-  <img src="screenshots/product-page.png" width="900">
+  <img src="screenshots/Screenshot From 2026-06-25 12-52-37.png" width="900">
 </p>
 
 ### Django Admin Dashboard
