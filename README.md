@@ -6,16 +6,16 @@ A fashion e-commerce website built with Django and Tailwind CSS. This project wa
 
 ## Features
 
-* Dynamic homepage banner management
-* Product listing by category
-* Product detail pages
-* Product image gallery
-* Order management through Django Admin
-* Responsive UI with Tailwind CSS
-* AWS S3 integration for media storage
-* Admin-controlled content management
-* Media upload and management
-
+- Dynamic homepage banner management
+- Product listing and product detail pages
+- Product image gallery
+- Responsive UI with Tailwind CSS
+- User registration and authentication
+- Password change functionality
+- Password reset via email
+- AWS S3 integration for media storage
+- Order management through Django Admin
+- Admin-controlled content management
 ---
 
 ## Tech Stack
@@ -145,7 +145,6 @@ This project was built to gain practical experience in:
   <img src="screenshots/Screenshot From 2026-06-25 12-52-37.png" width="900">
 </p>
 
-### Django Admin Dashboard
 
 <p align="center">
   <img src="screenshots/Screenshot From 2026-06-25 12-45-51.png" width="900">
