@@ -110,6 +110,7 @@ This project was built to gain practical experience in:
 
 * Django Models
 * Django Admin Customization
+* User Registration and Authentication
 * URL Routing
 * Template Rendering
 * CRUD Operations
@@ -121,7 +122,7 @@ This project was built to gain practical experience in:
 
 ## Future Improvements
 
-* User Registration and Authentication
+
 * Shopping Cart Functionality
 * Wishlist System
 * Product Search and Filtering
